@@ -46,3 +46,19 @@
 
 # Allow index page
 /0030 { /type "allow" /url "/index.html" }
+
+#### AEM Forms specific filters
+## to allow AF specific endpoints for prefill, submit and sign
+/0031 { /type "allow" /path "/content/forms/af/*" /method "POST" /selectors '(submit|internalsubmit|agreement|signSubmit|prefilldata)' /extension '(jsp|json)' }
+
+## to allow AF specific endpoints for thank you page
+/0032 { /type "allow" /path "/content/forms/af/*"  /method "GET" /selectors '(guideThankYouPage|guideAsyncThankYouPage)'  /extension '(html)'}
+
+## to allow AF specific endpoints for lazy loading
+/0033 { /type "allow" /path "/content/forms/af/*"  /method "GET" /extension '(jsonhtmlemitter)'}
+
+## to allow fp related funcitonalities
+/0034 { /type "allow" /path "/content/forms/*" /selectors '(fp|attach|draft|dor|api)'  /extension '(html|jsp|json|pdf)' }
+
+## to allow forms access via dam path
+/0035 { /type "allow" /path "/content/dam/formsanddocuments/**/jcr:content" /method "GET"}
